@@ -13,9 +13,14 @@ body {
   background-size: cover;
   background-position: center center;
 }
-.carousel-control-next,
-.carousel-control-prev {
-  width: 6%;
+.carousel .arrow {
+  font-size: 4rem;
+}
+
+@media (max-width: 992px) {
+  .carousel button {
+    display: none;
+  }
 }
 
 /* CAROUSEL */
@@ -24,10 +29,10 @@ body {
 .navbar {
   background-color: rgba(0, 0, 0, 0.9) !important;
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 7;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -50,6 +55,12 @@ body {
 .navbar-nav .nav-item {
   padding-left: 1rem;
   padding-right: 1rem;
+  transition: transform 2s;
+}
+.navbar-nav .nav-item:hover {
+  border: 0.2rem outset #f32c2c;
+  transform: rotateX(360deg);
+  border-radius: 6px 6px;
 }
 
 .navbar-main {
@@ -57,6 +68,13 @@ body {
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
 }
+
+@media (max-width: 992px) {
+  .navbar-main {
+    top: 0;
+  }
+}
+
 /* NAVBAR */
 
 /*  HEADER */
@@ -67,9 +85,20 @@ header {
   right: 0;
   padding-left: 7rem;
   padding-right: 7rem;
-  z-index: 1;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 992px) {
+  header {
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
 }
 
 header .contact {
@@ -77,101 +106,29 @@ header .contact {
   font-size: 1.3rem;
   text-align: right;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.514);
+  width: 100vw;
+}
+
+@media (max-width: 992px) {
+  header .contact {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.541);
+  }
 }
 
 header .contact .phone {
   font-size: 2.2rem;
   font-weight: 600;
-  color: white;
 }
-header .contact .phone .tel {
-  color: white;
-  text-decoration: none;
-}
-header .contact .phone .tel:hover {
-  font-size: 2.3rem;
-  color: rgb(168, 38, 15);
-  transform: translatey(5px);
-}
-
-/*  HEADER */
-
-/* FOOTER */
-footer {
-  position: absolute;
-  bottom: 0px;
-  right: 3rem;
-  z-index: 1;
-}
-
-footer ul {
-  display: flex;
-  list-style-type: none;
-}
-footer ul .title {
-  width: 110px;
-  text-align: start;
-  height: 50px;
-  padding: 0.2rem;
-}
-footer a {
-  background-color: rgb(168, 38, 15);
-  padding: 0.2rem;
-  border-radius: 0.2rem;
-  color: #ffffff;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-weight: 400;
-  height: 100%;
-  text-align: right;
-  box-shadow: 2px 2px 3px #03030357;
-  transform: rotate(-3deg);
-  margin-left: -30px;
-}
-footer .button {
-  transform: rotate(5deg);
-}
-footer i {
-  font-size: 2rem;
-  color: rgba(0, 0, 0, 0.212);
-}
-footer ul li a .title::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 60px;
-  width: 10px;
-  height: 10px;
-  background-color: rgb(168, 38, 15);
-  transform: rotate(45deg) translateY(-50%);
-  border-radius: 2px;
-}
-
-footer a:hover {
-  transform: translateY(-10px);
-  color: white;
-}
-
-/* FOOTER */
-
-/* SOCIAL MEDIA */
 
 .social-media {
   list-style-type: none;
   display: flex;
   padding: 0;
 }
-.social-media a:hover {
-  background-color: white;
-  color: rgb(168, 38, 15);
-  transform: translatey(5px);
-}
+
 .social-media a {
-  background-color: rgb(168, 38, 15);
-  transition: background-color 0.5s;
+  background-color: rgba(22, 9, 9, 0.842);
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -182,10 +139,153 @@ footer a:hover {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  transition: transform 2s;
 }
-
+.social-media a:hover {
+  transform: scale(1.2) rotateY(360deg);
+  background-image: linear-gradient(
+    rgba(206, 197, 197, 0.918),
+    rgba(204, 26, 26, 0.74)
+  );
+}
 .social-media li {
   margin-right: 0.7rem;
 }
+.carousel-control-next:focus,
+.carousel-control-next:hover,
+.carousel-control-prev:focus,
+.carousel-control-prev:hover {
+  color: #dc1616 !important;
+  text-decoration: none;
+  outline: 0;
+  opacity: 0.9;
+}
 
-/* SOCIAL MEDIA */
+/*  HEADER */
+
+/* FOOTER */
+footer {
+  position: absolute;
+  bottom: 0rem;
+  right: 7rem;
+  z-index: 5;
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  footer {
+    right: 50%;
+    transform: translateX(50%) scale(0.7);
+  }
+}
+
+footer ul {
+  display: flex;
+  list-style-type: none;
+  padding-left: 4rem;
+}
+
+footer li {
+  background-color: #f32c2c;
+  border-radius: 0.2rem;
+  transition: all 0.5s;
+}
+
+footer li:hover {
+  background-color: #f11717;
+}
+
+footer li:hover::after {
+  border-top: 13px solid #f11717;
+}
+
+footer li:hover i {
+  color: rgba(0, 0, 0, 0.349);
+}
+
+/* Kutuların altındaki üçgeni oluşturur */
+footer li::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 13px solid #f32c2c;
+  border-right: 15px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-left: 0 solid transparent;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Elemanları içi içe geçirmek ve kendi etrafında 5 derece döndürmek için */
+footer li:nth-child(1) {
+  z-index: 12;
+  transform: rotate(-5deg);
+}
+
+footer li:nth-child(1):hover {
+  z-index: 30;
+  transform: rotate(0deg) scale(1.1);
+  background-image: linear-gradient(rgb(17, 16, 16), rgba(223, 11, 11, 0.575));
+}
+
+footer li:nth-child(2) {
+  z-index: 11;
+  transform: translateX(-30%) rotate(5deg);
+}
+
+footer li:nth-child(2):hover {
+  z-index: 30;
+  transform: translateX(-30%) rotate(0deg) scale(1.1);
+  background-image: linear-gradient(rgb(17, 16, 16), rgba(223, 11, 11, 0.575));
+}
+
+footer li:nth-child(3) {
+  z-index: 10;
+  transform: translateX(-60%) rotate(-5deg);
+}
+
+footer li:nth-child(3):hover {
+  z-index: 30;
+  transform: translateX(-60%) rotate(0deg) scale(1.1);
+  background-image: linear-gradient(rgb(17, 16, 16), rgba(223, 11, 11, 0.575));
+}
+/* Elemanları içi içe geçirmek ve kendi etrafında 5 derece döndürmek için */
+
+footer a {
+  padding: 0.2rem 1.3rem;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  text-align: right;
+  box-shadow: 2px 0px 8px #03030357;
+}
+
+footer a:hover {
+  color: white;
+}
+
+footer i {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.212);
+}
+/* FOOTER */
+
+/* PAGE COMMON */
+.page-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.page-bg .row {
+  margin-top: 6rem;
+}
